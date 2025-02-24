@@ -1,0 +1,44 @@
+<!-- templates/profile.html -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <!-- 使用传入的数据作为页面标题 -->
+    <title>{{ profile.title }}</title>
+    <!-- 引入 CSS 样式文件，路径通过 url_for 动态生成 -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="profile-container">
+        <header>
+            <!-- 显示页面标题 -->
+            <h1>{{ profile.title }}</h1>
+        </header>
+        <section class="profile-content">
+            <div class="profile-image">
+                <!-- 显示个人头像 -->
+                <img src="{{ profile.profile_image }}" alt="个人头像">
+            </div>
+            <div class="profile-bio">
+                <!-- 显示个人姓名 -->
+                <h2>{{ profile.name }}</h2>
+                <!-- 显示个人简介 -->
+                <p>{{ profile.bio }}</p>
+                <!-- 显示技能 -->
+                <div class="skills-section">
+                    <h3>Skills</h3>
+                    <div class="skills-list">
+                        {% for skill in profile.skills %}
+                            <div class="skill">{{ skill }}</div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </section>
+        <footer>
+            <!-- 页脚信息 -->
+            <p>&copy; 2025 Wu Yupeng. 保留所有权利.</p>
+        </footer>
+    </div>
+</body>
+</html>
